@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { CardSection } from './common';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Text, TouchableWithoutFeedback, View, LayoutAnimation } from 'react-native';
 import { connect } from 'react-redux'; 
 import * as actions from '../actions';
 
 
 class ListItem extends Component {
+
+
+	// Called when component is being re-rendered before render function is called
+	// https://facebook.github.io/react/docs/react-component.html
+	componentWillUpdate() {
+		LayoutAnimation.spring();
+	}
 
 	render() {
 
@@ -36,7 +43,9 @@ class ListItem extends Component {
 
 			return (
 
-				<Text> {this.props.library.description}</Text>
+				<CardSection>
+					<Text style={{flex:1}}> {this.props.library.description}</Text>
+				</CardSection>
 			);
 		}
 	}
