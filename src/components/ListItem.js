@@ -17,16 +17,28 @@ class ListItem extends Component {
 				onPress={() => this.props.selectLibrary(this.props.library.id)}>
 
 				<View> 
-
 					<CardSection>	
 						<Text> {this.props.library.title}</Text>
 					</CardSection>
+					{this.renderDescription()}
 				</View>
+
 			
 			</TouchableWithoutFeedback>
 	
 		);
 
+	}
+
+	renderDescription() {
+
+		if (this.props.library.id == this.props.selectedLibraryId) {
+
+			return (
+
+				<Text> {this.props.library.description}</Text>
+			);
+		}
 	}
 }
 
@@ -37,4 +49,11 @@ const styles = {
 	}
 }
 
-export default connect(null, actions)(ListItem);
+const mapStateToProps = (state) => {
+
+	return {
+		selectedLibraryId : state.selectedLibraryId
+	}
+}
+
+export default connect(mapStateToProps, actions)(ListItem);
