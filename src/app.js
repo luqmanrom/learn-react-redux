@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers'
+import { Header } from './components/common'
 
 const App = () => {
 
@@ -10,11 +11,12 @@ const App = () => {
 
 		<Provider store={createStore(reducers)}>
 			<View> 
-				<Text> Hello Redux </Text>
+				<Header headerText="React Redux"> 
+
+				</Header>
 			</View>
 		</Provider>	
 	);
 };
-
 
 export default App;
